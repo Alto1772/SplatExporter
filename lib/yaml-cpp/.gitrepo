@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/jbeder/yaml-cpp
+	branch = 0.8.0
+	commit = f7320141120f720aecc4c32be25586e7da9eb978
+	parent = a1475ad62c5f01b7ce329f950e73b1c5fab161fc
+	method = merge
+	cmdver = 0.4.6
