@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/glankk/libgfxd
+	branch = master
+	commit = 96fd3b849f38b3a7c7b7f3ff03c5921d328e6cdf
+	parent = f7c96f1d82ac2bcd9399bdb5d571a5959531cddc
+	method = merge
+	cmdver = 0.4.6
