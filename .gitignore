@@ -1,2 +1,7 @@
 build/
+.vscode/
+*.z64
+*.v64
+*.n64
+splat.yaml
 # TODO more ignores
