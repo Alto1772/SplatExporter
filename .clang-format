@@ -9,7 +9,7 @@ AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
@@ -19,22 +19,22 @@ AlwaysBreakTemplateDeclarations: true
 BinPackArguments: true
 BinPackParameters: true
 BraceWrapping:
-  AfterCaseLabel: true
-  AfterClass: true
-  AfterControlStatement: true
-  AfterEnum: true
-  AfterFunction: true
-  AfterNamespace: true
-  AfterStruct: true
-  AfterUnion: true
-  BeforeCatch: true
-  BeforeElse: true
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
   IndentBraces: false
 BreakBeforeBinaryOperators: None
-BreakBeforeBraces: Custom
-BreakBeforeTernaryOperators: false
+BreakBeforeBraces: Attach
+BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: false
-ColumnLimit: 100
+ColumnLimit: 120
 CommentPragmas: '^ (IWYU pragma:|NOLINT)'
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 4
@@ -63,7 +63,7 @@ PenaltyBreakComment: 300
 PenaltyBreakFirstLessLess: 120
 PenaltyBreakString: 1000
 PenaltyExcessCharacter: 1000000
-PenaltyReturnTypeOnItsOwnLine: 60
+PenaltyReturnTypeOnItsOwnLine: 150
 PointerAlignment: Left
 ReflowComments: true
 SortIncludes: true
@@ -71,7 +71,7 @@ SpaceAfterCStyleCast: false
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 2
+SpacesBeforeTrailingComments: 1
 SpacesInAngles: false
 SpacesInContainerLiterals: true
 SpacesInCStyleCastParentheses: false
@@ -79,6 +79,6 @@ SpacesInParentheses: false
 SpacesInSquareBrackets: false
 Standard: Latest
 TabWidth: 4
-UseTab: AlignWithSpaces
+UseTab: Never
 ...
 
