@@ -6,6 +6,25 @@ set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
 set(CMAKE_C_STANDARD 11)
 
 ################################################################################
+# Download vcpkg for external dependencies on Windows
+################################################################################
+
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    include(CMake/automate-vcpkg.cmake)
+
+    if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
+        set(VCPKG_TRIPLET x64-windows-static)
+        set(VCPKG_TARGET_TRIPLET x64-windows-static)
+    elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
+        set(VCPKG_TRIPLET x86-windows-static)
+        set(VCPKG_TARGET_TRIPLET x86-windows-static)
+    endif()
+
+    vcpkg_bootstrap()
+    vcpkg_install_packages(libpng openssl)
+endif()
+
+################################################################################
 # Source files
 ################################################################################
 
@@ -19,17 +38,17 @@ set(ALL_SRC_FILES ${CXX_FILES} ${C_FILES})
 
 # -- libgfxd -- 
 
-set(LIBGFXD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgfxd)
-set(LIBGFXD_C_FILES 
-    ${LIBGFXD_DIR}/gfxd.c
-    ${LIBGFXD_DIR}/uc_f3d.c
-    ${LIBGFXD_DIR}/uc_f3db.c
-    ${LIBGFXD_DIR}/uc_f3dex.c
-    ${LIBGFXD_DIR}/uc_f3dex2.c
-    ${LIBGFXD_DIR}/uc_f3dexb.c
-)
+#set(LIBGFXD_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgfxd)
+#set(LIBGFXD_C_FILES 
+#    ${LIBGFXD_DIR}/gfxd.c
+#    ${LIBGFXD_DIR}/uc_f3d.c
+#    ${LIBGFXD_DIR}/uc_f3db.c
+#    ${LIBGFXD_DIR}/uc_f3dex.c
+#    ${LIBGFXD_DIR}/uc_f3dex2.c
+#    ${LIBGFXD_DIR}/uc_f3dexb.c
+#)
 
-list(APPEND ALL_SRC_FILES ${LIBGFXD_C_FILES})
+#list(APPEND ALL_SRC_FILES ${LIBGFXD_C_FILES})
 
 ################################################################################
 # Build executable
@@ -48,6 +67,17 @@ set(YAML_CPP_BUILD_TESTS OFF)
 set(YAML_CPP_BUILD_TOOLS OFF)
 add_subdirectory(${YAMLCPP_DIR})
 target_link_libraries(${PROJECT_NAME} PRIVATE yaml-cpp)
+
+# -- OpenSSL (External) --
+
+find_package(OpenSSL REQUIRED)
+include_directories(${OPENSSL_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::Crypto)
+
+# -- libpng (External) --
+
+#find_package(PNG REQUIRED)
+#target_link_libraries(${PROJECT_NAME} PRIVATE PNG::PNG)
 
 ################################################################################
 # Compile and link options
